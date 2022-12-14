@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App A</string>
+    <string name="dialog_confirm">Are you sure?</string>
+    <string name="confirm">Yes, continue.</string>
+    <string name="cancel">No, cancel.</string>
+    <string name="button_text">Tap here</string>
+    <string name="target_app">com.example.appb</string>
+</resources>
