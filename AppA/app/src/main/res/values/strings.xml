@@ -11,4 +11,6 @@
     <string name="keystore_heading">Text to encrypt in keystore:</string>
     <string name="decypted_heading">Decrypted text will appear below:</string>
     <string name="encypted_heading">Encrypted text will display below:</string>
+    <string name="no_incoming_intent">No email in incoming intent.</string>
+    <string name="tag">MainActivity[App A]</string>
 </resources>
