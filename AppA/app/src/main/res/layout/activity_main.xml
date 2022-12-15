@@ -15,6 +15,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:onClick="handleTap"
         android:text="@string/button_text"
         tools:layout_editor_absoluteX="152dp"
@@ -25,5 +26,89 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/IntentTextView" />
+
+    <View
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:background="@color/design_default_color_primary_dark" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/keystore_heading"
+        android:id="@+id/KeyStoreHeadding"/>
+
+    <TextView
+        android:textStyle="italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:text="@string/text_to_encrypt"
+        android:id="@+id/TextToEncrypt"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cryptoClick"
+        android:text="@string/encrypt_btn_text"
+        android:id="@+id/EncryptButton" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/encypted_heading"
+        android:id="@+id/EncryptedHeading"/>
+
+    <TextView
+        android:id="@+id/EncryptedTextView"
+        android:textStyle="italic"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/EncryptedTextView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cryptoClick"
+        android:text="@string/decrypt_btn_text"
+        android:id="@+id/DecryptButton"
+        />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/decypted_heading"
+        android:id="@+id/DecryptedHeading"/>
+
+    <TextView
+        android:id="@+id/DecryptedTextView"
+        android:textStyle="italic"
+        android:layout_gravity="start"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/DecryptedTextView" />
 
 </LinearLayout>
