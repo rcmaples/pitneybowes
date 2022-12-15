@@ -3,6 +3,14 @@
     <string name="dialog_confirm">Are you sure?</string>
     <string name="confirm">Yes, continue.</string>
     <string name="cancel">No, cancel.</string>
-    <string name="button_text">Tap here</string>
+    <string name="button_text">Tap here to switch apps</string>
     <string name="target_app">com.example.appa</string>
+    <string name="encrypt_btn_text">Encrypt Data</string>
+    <string name="decrypt_btn_text">Decrypt Data</string>
+    <string name="text_to_encrypt">Lorem ipsum dolor sit amet</string>
+    <string name="keystore_heading">Text to encrypt in keystore:</string>
+    <string name="decypted_heading">Decrypted text will appear below:</string>
+    <string name="encypted_heading">Encrypted text will display below:</string>
+    <string name="no_incoming_intent">No email in incoming intent.</string>
+    <string name="tag">MainActivity[App B]</string>
 </resources>
