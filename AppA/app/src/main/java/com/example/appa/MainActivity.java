@@ -34,7 +34,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public class MainActivity extends AppCompatActivity implements FSOnReadyListener {
-
     @SuppressLint("NonConstantResourceId")
 
     private String TARGET_APP;
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
     private TextView encryptedTextView;
 
     private SharedPreferences sharedPrefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +129,9 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
     }
 
     public void getPrefs(View view) {
-        String my_pref = this.sharedPrefs.getString("myPref", "unable to locate `myPref`");
-        Toast.makeText(getApplicationContext(), my_pref, Toast.LENGTH_SHORT).show();
+        final int duration =  Toast.LENGTH_SHORT;
+        String my_pref = sharedPrefs.getString("myPref", "unable to locate `myPref`");
+        Toast.makeText(getApplication(), my_pref, duration).show();
     }
 
     // For logging FullStory Session URL
@@ -164,6 +165,11 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
 
     // For Intent
     public void handleTap(View view) {
+
+        int duration = Toast.LENGTH_LONG;
+        CharSequence content= String.format("requested package does not exist (%s)", TARGET_APP);
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder
                 .setTitle("Open App B")
@@ -177,12 +183,7 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
                                 .putExtra("email","foo@bar.com");
                         startActivity(launchIntent);
                     } else {
-                        Toast
-                                .makeText(
-                                        MainActivity.this,
-                                        String.format("requested package does not exist (%s)", TARGET_APP),
-                                        Toast.LENGTH_LONG)
-                                .show();
+                        Toast.makeText(getApplication(), content, duration).show();
                     }
                 })
                 .setNegativeButton("No", (dialog, which) -> dialog.cancel());
