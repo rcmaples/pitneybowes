@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fullstory="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/main"
+    fullstory:fs_class="fs-unmask"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +69,7 @@
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_gravity="start"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/encrypted_heading"
@@ -75,7 +79,7 @@
         android:id="@+id/EncryptedTextView"
         android:textStyle="italic"
         android:layout_gravity="start"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
