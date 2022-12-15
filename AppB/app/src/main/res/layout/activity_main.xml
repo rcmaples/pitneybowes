@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Hola a Mundo!" />
+        android:text="@string/hello_world" />
 
     <Button
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         android:layout_marginStart="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/encypted_heading"
+        android:text="@string/encrypted_heading"
         android:id="@+id/EncryptedHeading"/>
 
     <TextView
@@ -97,7 +97,7 @@
         android:layout_marginStart="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/decypted_heading"
+        android:text="@string/decrypted_heading"
         android:id="@+id/DecryptedHeading"/>
 
     <TextView
@@ -110,5 +110,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/DecryptedTextView" />
+
+    <View
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:background="@color/design_default_color_primary_dark" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:onClick="getPrefs"
+        android:text="@string/getpref_btn_txt"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="375dp" />
 
 </LinearLayout>
