@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
     private TextView decryptedTextView;
     private TextView encryptedTextView;
 
+    private SharedPreferences sharedPrefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
 
         }
 
+        writePref();
+
     }
 
     private void decryptText() {
@@ -111,6 +116,21 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
             Log.e(TAG, "onClick() called with: " + e.getMessage(), e);
             e.printStackTrace();
         }
+    }
+
+    @SuppressLint("ApplySharedPref") //for .commit()
+    private void writePref() {
+        String MY_PREF_STRING = getString(R.string.pref_to_share);
+        sharedPrefs = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPrefs.edit();
+        myEdit.putString("myPref", MY_PREF_STRING);
+//        myEdit.apply();
+        myEdit.commit();
+    }
+
+    public void getPrefs(View view) {
+        String my_pref = this.sharedPrefs.getString("myPref", "unable to locate `myPref`");
+        Toast.makeText(getApplicationContext(), my_pref, Toast.LENGTH_SHORT).show();
     }
 
     // For logging FullStory Session URL

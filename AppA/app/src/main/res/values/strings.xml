@@ -13,4 +13,7 @@
     <string name="encypted_heading">Encrypted text will display below:</string>
     <string name="no_incoming_intent">No email in incoming intent.</string>
     <string name="tag">MainActivity[App A]</string>
+    <string name="pref_to_share">Red Vines are better.</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="getpref_btn_txt">Display Shared Preferences</string>
 </resources>
