@@ -9,8 +9,11 @@
     <string name="decrypt_btn_text">Decrypt Data</string>
     <string name="text_to_encrypt">Lorem ipsum dolor sit amet</string>
     <string name="keystore_heading">Text to encrypt in keystore:</string>
-    <string name="decypted_heading">Decrypted text will appear below:</string>
-    <string name="encypted_heading">Encrypted text will display below:</string>
+    <string name="decrypted_heading">Decrypted text will appear below:</string>
+    <string name="encrypted_heading">Encrypted text will display below:</string>
     <string name="no_incoming_intent">No email in incoming intent.</string>
     <string name="tag">MainActivity[App B]</string>
+    <string name="pref_to_share">I prefer Twizzlers over Red Vines.</string>
+    <string name="hello_world">¡Hola a Mundo!</string>
+    <string name="getpref_btn_txt">Display Shared Preferences</string>
 </resources>
