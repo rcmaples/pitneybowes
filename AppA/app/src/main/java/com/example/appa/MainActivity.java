@@ -1,12 +1,16 @@
 package com.example.appa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.security.keystore.KeyGenParameterSpec;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +22,7 @@ import com.fullstory.FSOnReadyListener;
 import com.fullstory.FSSessionData;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyStoreException;
@@ -86,7 +91,12 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
 
         }
 
-        writePref();
+        try {
+            sharedPrefs = initEncryptedPrefs();
+        } catch (GeneralSecurityException | IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -118,19 +128,62 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
         }
     }
 
-    @SuppressLint("ApplySharedPref") //for .commit()
-    private void writePref() {
+    // Creates an encrypted sharedPreferences and stores a string.
+    private SharedPreferences initEncryptedPrefs() throws GeneralSecurityException, IOException {
+
         String MY_PREF_STRING = getString(R.string.pref_to_share);
-        sharedPrefs = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPrefs.edit();
-        myEdit.putString("myPref", MY_PREF_STRING);
-//        myEdit.apply();
-        myEdit.commit();
+
+        Context context = MainActivity.this;
+        String masterKeyAlias = null;
+        SharedPreferences.Editor editor;
+
+        KeyGenParameterSpec keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC;
+        try {
+            masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (masterKeyAlias != null) {
+            try {
+                sharedPrefs = EncryptedSharedPreferences
+                        .create(
+                                MY_PREF_STRING,
+                                masterKeyAlias,
+                                context,
+                                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                        );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        writePref(sharedPrefs, MY_PREF_STRING);
+        return sharedPrefs;
     }
 
-    public void getPrefs(View view) {
+    @SuppressLint("ApplySharedPref") //for .commit()
+    private void writePref(SharedPreferences prefs, String content) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("myPref", content);
+        editor.commit();
+    }
+
+    public void getPrefContents(View view) {
         final int duration =  Toast.LENGTH_SHORT;
-        String my_pref = sharedPrefs.getString("myPref", "unable to locate `myPref`");
+        String my_pref;
+
+        if (sharedPrefs == null) {
+            try {
+                sharedPrefs = initEncryptedPrefs();
+            } catch (GeneralSecurityException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        my_pref= sharedPrefs.getString("myPref", "unable to locate `myPref`");
+
         Toast.makeText(getApplication(), my_pref, duration).show();
     }
 

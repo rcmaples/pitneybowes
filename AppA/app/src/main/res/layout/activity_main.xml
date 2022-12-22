@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:onClick="getPrefs"
+        android:onClick="getPrefContents"
         android:text="@string/getpref_btn_txt"
         tools:layout_editor_absoluteX="152dp"
         tools:layout_editor_absoluteY="375dp" />
