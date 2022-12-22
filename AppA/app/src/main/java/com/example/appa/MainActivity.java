@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
             e.printStackTrace();
         }
 
-
     }
 
     private void decryptText() {
@@ -135,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements FSOnReadyListener
 
         Context context = MainActivity.this;
         String masterKeyAlias = null;
-        SharedPreferences.Editor editor;
 
         KeyGenParameterSpec keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC;
         try {
